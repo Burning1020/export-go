@@ -104,7 +104,7 @@ func (sender *oedkconnectSender) Prepare() {
 
 	// subscribe cloud/monitoring/update/configuration/{protocol}
 	go func() {
-		ProTopic := strings.Replace(CONFIGPROINFO_TOPIC, "{protocol}", "OPCUA", 1)
+		ProTopic := strings.Replace(CONFIGPROINFO_TOPIC, "{protocol}", sender.config.Oedk.Protocol, 1)
 		token = sender.client.Subscribe(ProTopic, 0, sender.HandleProTopic)
 		if token.Wait() && token.Error() != nil {
 			LoggingClient.Error(token.Error().Error())

@@ -17,6 +17,7 @@ type configuration struct {
 }
 
 type oedk struct {
+	Protocol string
 	IsInitialized bool
 	InitJson  string
 }

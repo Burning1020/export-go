@@ -1,4 +1,5 @@
 [Oedk]
+  Protocol = "OPCUA"
   IsInitialized = false
   InitJson = ''
 
