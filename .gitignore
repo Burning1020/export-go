@@ -1,0 +1,10 @@
+*~
+*.log
+cmd/export-client/export-client
+cmd/export-client/export-client-arm64
+cmd/export-distro/export-distro
+cmd/export-distro/export-distro-arm64
+go.sum
+vendor
+.idea
+glide.lock
