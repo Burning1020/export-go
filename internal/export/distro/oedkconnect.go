@@ -68,7 +68,7 @@ func (sender *oedkconnectSender) Prepare() {
 	token := sender.client.Connect()
 	if token.Wait() && token.Error() != nil {
 		LoggingClient.Error(fmt.Sprintf("Could not connect to mosquitto, drop event. Error: %s", token.Error().Error()))
-		panic(token.Error())
+		return
 	}
 	LoggingClient.Info("Connected into mosquitto")
 
@@ -144,7 +144,7 @@ func (sender *oedkconnectSender) Send(data []byte, event *models.Event) bool {
 		var index = int(0) // the number of DataPointId that linked with data
 
 		for _, readingItem := range r.Readings {
-			LoggingClient.Info(fmt.Sprintf("ReadingItem.value is %s", readingItem.Value))
+			//LoggingClient.Info(fmt.Sprintf("ReadingItem.value is %s", readingItem.Value))
 			//token := sender.client.Publish(sender.topic, 0, false, tempPayload)
 
 			jsonTemplate := "[\n" +
@@ -172,9 +172,9 @@ func (sender *oedkconnectSender) Send(data []byte, event *models.Event) bool {
 				LoggingClient.Error(token.Error().Error())
 				return false
 			}
+			LoggingClient.Info(fmt.Sprintf("Send data successfully! ReadingItem.value is %s", readingItem.Value))
+			return true
 		}
-		LoggingClient.Debug(fmt.Sprintf("Sent data"))
-		return true
 	}
 	return false
 }

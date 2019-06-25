@@ -21,6 +21,9 @@ To allow Edgexfoundry export data to MindSphere(Siemens open IoT operating systh
 2. Run the export-client service and update a new export endpoint by RESTful API of export-client service, use mosquitto address and port, and use `OEDKCONNECT_TOPIC`.
 3. Do this step iff OEDK hasn't been initialized. Download onboard key and copy the context to `oedkconfig.toml` in single quotes, that is due to the escape character. Change the IsInitialized option to false. Ignore the DataSorceId and DataPointId.
 4. Run the export-distro.
+
+**Note:** Only export-distro doesn't support cross compiler. If needed, please built on arm64.
+
 ----
 The following is the offical README
 
